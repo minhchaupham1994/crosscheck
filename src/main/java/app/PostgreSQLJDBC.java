@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostgreSQLJDBC {
@@ -27,6 +28,24 @@ public class PostgreSQLJDBC {
 		    
 		}
     	return rs;
+    }
+    
+    public static List<UnmatchedTransaction> parseResultSet(ResultSet rs, String reason) {
+    	List<UnmatchedTransaction> unmatchList = new ArrayList<>();
+    	
+    	if (rs == null) {
+    		return unmatchList;
+    	} 
+    	
+    	try {
+			while(rs.next()) {
+				unmatchList.add(new UnmatchedTransaction(rs.getString(1), reason));
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+    	
+    	return unmatchList;
     }
    
 }

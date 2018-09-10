@@ -8,9 +8,10 @@
   <servlet>
     <servlet-name>CrossCheck</servlet-name>
     <servlet-class>app.CrossCheckServlet</servlet-class>
-  </servlet>
+  </servlet>  
   <servlet-mapping>
     <servlet-name>CrossCheck</servlet-name>
-    <url-pattern>/crosscheck/*</url-pattern>
+    <url-pattern>/crosscheck/*</url-pattern>    
   </servlet-mapping>
+
 </web-app>
